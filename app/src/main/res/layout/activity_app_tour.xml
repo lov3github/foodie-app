@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F9e00e"
+    tools:context=".Activity.AppTourActivity">
+
+    <TextView
+        android:layout_marginTop="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FooDie"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        />
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:lottie_url="REPLACE_JSON_URL"
+        app:lottie_rawRes="@raw/apptour"
+        app:lottie_autoPlay="true"
+        android:layout_gravity="center"
+        app:lottie_loop="true"/>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView1"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:lottie_url="REPLACE_JSON_URL"
+        app:lottie_rawRes="@raw/downarrow"
+        app:lottie_autoPlay="true"
+        android:layout_marginBottom="40dp"
+        android:layout_gravity="center"
+        app:lottie_loop="true"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_fd"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#D01b38"
+        app:cornerRadius="10dp"
+        android:text="BẮT ĐẦU TRẢI NGHIỆM"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        />
+
+</LinearLayout>
