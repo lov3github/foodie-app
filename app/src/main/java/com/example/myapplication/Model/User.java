@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Model;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
@@ -8,6 +8,7 @@ import java.util.Map;
 
 @IgnoreExtraProperties
 public class User {
+
     private String fullName;
     private String phoneNumber;
     private String password;

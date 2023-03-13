@@ -1,12 +1,11 @@
-package com.example.myapplication;
+package com.example.myapplication.DAO;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.myapplication.Model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,14 +17,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FireBaseDAO {
+public class FireBaseUserDAO {
 
     public static final String KEY_USERS_REFERENCE_PATH = "users";
-
     public static final String KEY_PHONENUMBER_CHILD_PATH = "phoneNumber";
     public static final String KEY_PASSWORD_CHILD_PATH = "password";
     public static final String KEY_DATEOFBIRTH_CHILD_PATH = "dateOfBirth";
     public static final String KEY_FULLNAME_CHILD_PATH = "fullName";
+    public static final String KEY_GENDER_CHILD_PATH = "gender";
+
 
     public static final String KEY_EMAIL_CHILD_PATH = "email";
 
@@ -71,7 +71,7 @@ public class FireBaseDAO {
      *
      * @param context là context của activity
      */
-    public FireBaseDAO(Context context) {
+    public FireBaseUserDAO(Context context) {
         this.context = context;
     }
 
@@ -101,6 +101,18 @@ public class FireBaseDAO {
 
         if (!TextUtils.isEmpty(user.getPassword()))
             mDatabase.child(userKey).child(KEY_PASSWORD_CHILD_PATH).setValue(user.getPassword());
+
+        if (!TextUtils.isEmpty(user.getFullName()))
+            mDatabase.child(userKey).child(KEY_FULLNAME_CHILD_PATH).setValue(user.getPassword());
+
+        if (!TextUtils.isEmpty(user.getEmail()))
+            mDatabase.child(userKey).child(KEY_EMAIL_CHILD_PATH).setValue(user.getPassword());
+
+        if (!TextUtils.isEmpty(user.getGender()))
+            mDatabase.child(userKey).child(KEY_GENDER_CHILD_PATH).setValue(user.getPassword());
+
+        if (!TextUtils.isEmpty(user.getDateOfBirth()))
+            mDatabase.child(userKey).child(KEY_DATEOFBIRTH_CHILD_PATH).setValue(user.getPassword());
     }
 
     /**
@@ -182,7 +194,6 @@ public class FireBaseDAO {
             }
         });
 
-
     }
 
     /**
@@ -190,7 +201,7 @@ public class FireBaseDAO {
      * khi ArrayList này đã được nạp dữ liệu xong,
      * bạn có thể gọi nó thông qua tham số của hàm onArrayListReceived thuộc interface ArrayListUserCallback.
      *
-     * @param wherePath         là path con dạng string chỉ tên trường dữ liệu nào cần so sánh.
+     * @param wherePath         là path con dạng string chỉ tên trường dữ liệu nào cần so sánh, được lưu sẵn là KEY_--_CHILD_PATH.
      * @param equalValue        là giá trị dữ liệu so sánh bằng với các dữ liệu lấy từ trường.
      * @param arrayListCallback là 1 interface ArrayListUserCallback.
      */
@@ -221,13 +232,14 @@ public class FireBaseDAO {
         });
     }
 
+
     /**
      * The work of this method: lấy Key của user có phoneNumber chỉ định trên database và gắn nó vào 1 String,
      * khi String này đã được nạp dữ liệu xong,
      * bạn có thể gọi nó thông qua tham số của hàm onKeyReceived thuộc interface KeyCallback.
      *
-     * @param numberPhoneEqualValue         là giá trị dữ liệu so sánh bằng với các dữ liệu lấy từ trường phoneNumber.
-     * @param callback là 1 interface KeyCallback.
+     * @param numberPhoneEqualValue là giá trị dữ liệu so sánh bằng với các dữ liệu lấy từ trường phoneNumber.
+     * @param callback              là 1 interface KeyCallback.
      */
     public void getKey(String numberPhoneEqualValue, final KeyCallback callback) {
         Query query = mDatabase.orderByChild(KEY_PHONENUMBER_CHILD_PATH).equalTo(numberPhoneEqualValue);
@@ -250,6 +262,39 @@ public class FireBaseDAO {
             }
         });
     }
+
+
+    /**
+     * The work of this method: lấy Key của user có phoneNumber chỉ định trên database và gắn nó vào 1 String,
+     * khi String này đã được nạp dữ liệu xong,
+     * bạn có thể gọi nó thông qua tham số của hàm onKeyReceived thuộc interface KeyCallback.
+     *
+     * @param wherePath  là path con dạng string chỉ tên trường dữ liệu nào cần so sánh, được lưu sẵn là KEY_--_CHILD_PATHs.
+     * @param equalValue là giá trị dữ liệu so sánh bằng với các dữ liệu lấy từ trường tương ứng.
+     * @param callback   là 1 interface KeyCallback.
+     */
+    public void getKey(String wherePath, String equalValue, final KeyCallback callback) {
+        Query query = mDatabase.orderByChild(wherePath).equalTo(equalValue);
+        query.keepSynced(true);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String key = null;
+                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                    key = childSnapshot.getKey();
+                    break; // Only get the first key
+                }
+                callback.onKeyReceived(key);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle errors
+                callback.onKeyReceived(null);
+            }
+        });
+    }
+
 
     /**
      * The work of this method: bạn quá chán nản khi không có dữ liệu để chạy các hàm của class này,
