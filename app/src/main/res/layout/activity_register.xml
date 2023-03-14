@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary_color"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@null"
+            android:contentDescription="Go back"
+            android:padding="8dp"
+            android:src="@drawable/baseline_arrow_back_wh" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="88dp"
+            android:gravity="center"
+            android:text="ĐĂNG KÝ"
+            android:textColor="@color/white_color"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/inputFirstNameEditText"
+            android:layout_width="174dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/bg_input"
+            android:hint="Họ *"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingLeft="16dp"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/inputLastNameEditText"
+            android:layout_width="174dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/bg_input"
+            android:hint="Tên *"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingLeft="16dp"
+            android:singleLine="true" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/inputPhoneNumberEditText"
+        android:layout_width="364dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_input"
+        android:hint="Số điện thoại *"
+        android:inputType="phone"
+        android:maxLines="1"
+        android:paddingLeft="16dp"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/inputEmailEditText"
+        android:layout_width="364dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_input"
+        android:hint="Email *"
+        android:inputType="phone"
+        android:maxLines="1"
+        android:paddingLeft="16dp"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/inputPasswordEditText"
+        android:layout_width="364dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_input"
+        android:drawableEnd="@drawable/ic_close_eye"
+        android:hint="Mật khẩu *"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/confirmPasswordEditText"
+        android:layout_width="364dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_input"
+        android:drawableEnd="@drawable/ic_close_eye"
+        android:hint="Xác nhận mật khẩu *"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/inputDateEditText"
+        android:layout_width="364dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_input"
+        android:drawableEnd="@drawable/ic_calendar"
+        android:hint="Ngày tháng năm *"
+        android:inputType="date"
+        android:maxLines="1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/inputGenderEditText"
+        android:layout_width="364dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_input"
+        android:drawableEnd="@drawable/ic_arrow_down"
+        android:hint="Nữ"
+        android:inputType="date"
+        android:maxLines="1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:singleLine="true" />
+
+    <CheckBox
+        android:layout_width="364dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Tôi đồng ý với các Điều khoản."
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="364dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_primary_button"
+        android:gravity="center"
+        android:text="Đăng ký"
+        android:textColor="@color/white_color"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="364dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đã có tài khoản?"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="4dp"
+            android:text="Đăng nhập"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>
